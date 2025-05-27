@@ -8,47 +8,36 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Main wrapper to confine layout -->
   <div id="app-wrapper">
     <header>
-      <!-- Title displayed prominently -->
       <h1>Artillery Plus</h1>
     </header>
 
-    <!-- History Display Section -->
     <section id="history-section">
       <h2>Recent Calculations</h2>
-      <div id="history-entries">
-        <!-- Entries injected via JS -->
-      </div>
+      <div id="history-entries"></div>
       <button id="toggle-history">Show More</button>
     </section>
 
-    <!-- Calculator Input Section -->
     <section id="calculator-section">
       <h2>Calculator</h2>
       <form id="calc-form">
-        <!-- Select faction -->
         <label for="faction">Faction:</label>
         <select id="faction" name="faction">
-          <option value="us">US</option>
-          <option value="german">German</option>
+          <option value="german_us">German/US</option>
           <option value="soviet">Soviet</option>
+          <option value="british">British</option>
         </select>
 
-        <!-- Distance input -->
         <label for="distance">Distance (m):</label>
-        <input type="number" id="distance" name="distance" min="1" required />
+        <input type="number" id="distance" name="distance" min="100" max="1600" required />
 
-        <!-- Submit button -->
         <button type="submit">Calculate</button>
       </form>
 
-      <!-- Result display -->
-      <div id="result-output">
-        <!-- Result injected via JS -->
-      </div>
+      <div id="result-output"></div>
     </section>
   </div>
 </body>
 </html>
+
