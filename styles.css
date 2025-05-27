@@ -1,3 +1,4 @@
+/* Basic theme and color setup */
 body {
   margin: 0;
   padding: 0;
@@ -21,31 +22,52 @@ body {
   --accent: #1976d2;
 }
 
+/* Layout: two-column with header */
 #app-wrapper {
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+header {
+  grid-column: span 2;
+  text-align: center;
 }
 
 header h1 {
-  text-align: center;
   font-size: 2rem;
   color: var(--accent);
 }
 
-section {
+/* Mil output block */
+#result-output {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 2rem;
   background-color: var(--box-bg);
-  padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-h2 {
+/* History panel */
+#history-section {
+  grid-row: span 2;
+  background-color: var(--box-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+#history-section h2 {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 #history-entries {
@@ -54,21 +76,30 @@ h2 {
   gap: 0.5rem;
 }
 
+/* Regular and enhanced history entries */
 .history-entry {
+  font-size: 1rem;
   background-color: rgba(255,255,255,0.05);
   padding: 0.5rem;
   border-radius: 4px;
-  font-size: 0.9rem;
+  transition: all 0.2s;
 }
 
-#toggle-history {
-  margin-top: 0.5rem;
+.history-entry.enhanced {
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: rgba(79, 195, 247, 0.15);
 }
 
-#calc-form {
+/* Calculator styling */
+#calculator-section {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  background-color: var(--box-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 label, input, select, button {
@@ -94,18 +125,20 @@ button:hover {
   filter: brightness(90%);
 }
 
-#result-output {
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
+/* Mobile layout tweaks */
+@media (max-width: 800px) {
   #app-wrapper {
-    padding: 0.5rem;
+    display: block;
   }
 
-  h1, h2 {
-    font-size: 1.25rem;
+  #result-output {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  .history-entry.enhanced {
+    font-size: 1.1rem;
   }
 }
+
 
