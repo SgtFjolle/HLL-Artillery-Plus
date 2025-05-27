@@ -1,11 +1,11 @@
-const form = document.getElementById('calc-form');
-const distanceInput = document.getElementById('distance');
 const resultOutput = document.getElementById('result-output');
 const historyContainer = document.getElementById('history-entries');
-const toggleHistoryBtn = document.getElementById('toggle-history');
+const distanceInput = document.getElementById('distance');
+const toggleFullHistory = document.getElementById('toggle-full-history');
+const factionInputs = document.querySelectorAll('input[name="faction"]');
 
 let history = [];
-let showAllHistory = false;
+let showFullHistory = false;
 let historyTimer;
 let lastSavedDistance = null;
 
@@ -14,6 +14,10 @@ const factionMilRanges = {
   "soviet": { min: 800, max: 1120 },
   "british": { min: 267, max: 533 }
 };
+
+function getSelectedFaction() {
+  return Array.from(factionInputs).find(input => input.checked).value;
+}
 
 function getMilValue(distance, faction) {
   const range = factionMilRanges[faction];
@@ -24,12 +28,13 @@ function getMilValue(distance, faction) {
 }
 
 function updateLiveResult() {
-  const factionKey = form.faction.value;
+  const factionKey = getSelectedFaction();
   const distance = parseInt(distanceInput.value);
 
   if (!isNaN(distance) && distance >= 100 && distance <= 1600) {
     const mil = getMilValue(distance, factionKey);
     resultOutput.textContent = `${mil} mil`;
+    resultOutput.classList.remove("out-of-range");
 
     clearTimeout(historyTimer);
     historyTimer = setTimeout(() => {
@@ -41,17 +46,15 @@ function updateLiveResult() {
       }
     }, 1000);
   } else {
-    resultOutput.textContent = "100–1600m";
+    resultOutput.textContent = "Out of Range";
+    resultOutput.classList.add("out-of-range");
     clearTimeout(historyTimer);
   }
 }
 
-distanceInput.addEventListener('input', updateLiveResult);
-form.faction.addEventListener('change', updateLiveResult);
-
 function renderHistory() {
   historyContainer.innerHTML = '';
-  const displayCount = showAllHistory ? 10 : 3;
+  const displayCount = showFullHistory ? 10 : 3;
   history.slice(0, displayCount).forEach((item, index) => {
     const div = document.createElement('div');
     div.className = 'history-entry';
@@ -59,13 +62,13 @@ function renderHistory() {
     div.textContent = item;
     historyContainer.appendChild(div);
   });
-  toggleHistoryBtn.textContent = showAllHistory ? 'Show Less' : 'Show More';
 }
 
-toggleHistoryBtn.addEventListener('click', () => {
-  showAllHistory = !showAllHistory;
+toggleFullHistory.addEventListener('change', () => {
+  showFullHistory = toggleFullHistory.checked;
   renderHistory();
 });
 
-document.querySelector('#calc-form button[type="submit"]').style.display = 'none';
+distanceInput.addEventListener('input', updateLiveResult);
+factionInputs.forEach(input => input.addEventListener('change', updateLiveResult));
 
