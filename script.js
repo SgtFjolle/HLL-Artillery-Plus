@@ -2,8 +2,9 @@ const resultOutput = document.getElementById('result-output');
 const historyContainer = document.getElementById('history-entries');
 const distanceInput = document.getElementById('distance');
 const toggleFullHistory = document.getElementById('toggle-full-history');
-const factionInputs = document.querySelectorAll('input[name="faction"]');
+const factionButtons = document.querySelectorAll('.faction-btn');
 
+let selectedFaction = 'german_us';
 let history = [];
 let showFullHistory = false;
 let historyTimer;
@@ -15,10 +16,6 @@ const factionMilRanges = {
   "british": { min: 267, max: 533 }
 };
 
-function getSelectedFaction() {
-  return Array.from(factionInputs).find(input => input.checked).value;
-}
-
 function getMilValue(distance, faction) {
   const range = factionMilRanges[faction];
   if (!range) return null;
@@ -28,11 +25,9 @@ function getMilValue(distance, faction) {
 }
 
 function updateLiveResult() {
-  const factionKey = getSelectedFaction();
   const distance = parseInt(distanceInput.value);
-
   if (!isNaN(distance) && distance >= 100 && distance <= 1600) {
-    const mil = getMilValue(distance, factionKey);
+    const mil = getMilValue(distance, selectedFaction);
     resultOutput.textContent = `${mil} mil`;
     resultOutput.classList.remove("out-of-range");
 
@@ -70,5 +65,11 @@ toggleFullHistory.addEventListener('change', () => {
 });
 
 distanceInput.addEventListener('input', updateLiveResult);
-factionInputs.forEach(input => input.addEventListener('change', updateLiveResult));
+factionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    selectedFaction = button.dataset.faction;
+    updateLiveResult();
+  });
+});
+
 
