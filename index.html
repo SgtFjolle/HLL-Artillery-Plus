@@ -9,18 +9,24 @@
 </head>
 <body>
   <div id="app-wrapper">
+    
+    <!-- Page title -->
     <header>
       <h1>Artillery Plus</h1>
     </header>
 
+    <!-- Top-left: Large real-time output -->
+    <div id="result-output">100–1600m</div>
+
+    <!-- Right column: History feed -->
     <section id="history-section">
       <h2>Recent Calculations</h2>
       <div id="history-entries"></div>
       <button id="toggle-history">Show More</button>
     </section>
 
+    <!-- Bottom-left: Calculator inputs -->
     <section id="calculator-section">
-      <h2>Calculator</h2>
       <form id="calc-form">
         <label for="faction">Faction:</label>
         <select id="faction" name="faction">
@@ -31,12 +37,11 @@
 
         <label for="distance">Distance (m):</label>
         <input type="number" id="distance" name="distance" min="100" max="1600" required />
-
-        <button type="submit">Calculate</button>
+        
+        <button type="submit">Calculate</button> <!-- Hidden via CSS/JS -->
       </form>
-
-      <div id="result-output"></div>
     </section>
+    
   </div>
 </body>
 </html>
