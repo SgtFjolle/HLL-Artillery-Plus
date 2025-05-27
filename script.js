@@ -23,7 +23,6 @@ function getMilValue(distance, faction) {
   return Math.floor((1 - fraction) * max + fraction * min);
 }
 
-// Live preview logic — always show result immediately
 function updateLiveResult() {
   const factionKey = form.faction.value;
   const distance = parseInt(distanceInput.value);
@@ -32,17 +31,15 @@ function updateLiveResult() {
     const mil = getMilValue(distance, factionKey);
     resultOutput.textContent = `${mil} mil`;
 
-    // Debounced history save
     clearTimeout(historyTimer);
     historyTimer = setTimeout(() => {
       if (lastSavedDistance !== distance) {
         history.unshift(`${distance}m → ${mil} mil`);
-        if (history.length > 6) history.pop();
+        if (history.length > 10) history.pop();
         lastSavedDistance = distance;
         renderHistory();
       }
-    }, 800);
-
+    }, 1000);
   } else {
     resultOutput.textContent = "100–1600m";
     clearTimeout(historyTimer);
@@ -54,10 +51,11 @@ form.faction.addEventListener('change', updateLiveResult);
 
 function renderHistory() {
   historyContainer.innerHTML = '';
-  const displayCount = showAllHistory ? 6 : 3;
-  history.slice(0, displayCount).forEach(item => {
+  const displayCount = showAllHistory ? 10 : 3;
+  history.slice(0, displayCount).forEach((item, index) => {
     const div = document.createElement('div');
     div.className = 'history-entry';
+    if (index < 3) div.classList.add('enhanced');
     div.textContent = item;
     historyContainer.appendChild(div);
   });
@@ -69,6 +67,5 @@ toggleHistoryBtn.addEventListener('click', () => {
   renderHistory();
 });
 
-// Remove submit button
 document.querySelector('#calc-form button[type="submit"]').style.display = 'none';
 
