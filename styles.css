@@ -1,4 +1,3 @@
-/* Global resets and font */
 body {
   margin: 0;
   padding: 0;
@@ -8,7 +7,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Light/Dark themes */
 :root {
   --bg: #1e1e1e;
   --text: #ffffff;
@@ -23,7 +21,6 @@ body {
   --accent: #1976d2;
 }
 
-/* Main layout wrapper */
 #app-wrapper {
   max-width: 800px;
   margin: auto;
@@ -51,7 +48,6 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
-/* History section */
 #history-entries {
   display: flex;
   flex-direction: column;
@@ -67,10 +63,8 @@ h2 {
 
 #toggle-history {
   margin-top: 0.5rem;
-  align-self: flex-start;
 }
 
-/* Calculator form */
 #calc-form {
   display: flex;
   flex-direction: column;
@@ -100,13 +94,11 @@ button:hover {
   filter: brightness(90%);
 }
 
-/* Output section */
 #result-output {
   margin-top: 1rem;
   font-weight: bold;
 }
 
-/* Responsive check */
 @media (max-width: 600px) {
   #app-wrapper {
     padding: 0.5rem;
@@ -116,3 +108,4 @@ button:hover {
     font-size: 1.25rem;
   }
 }
+
