@@ -18,16 +18,15 @@
     <!-- Output Display Block -->
     <div id="result-section">
       <div id="result-output">100–1600m</div>
-      <!-- Placeholder for future visual element -->
-      <div id="result-visual"></div>
+      <div id="result-visual"></div> <!-- Placeholder for future visual -->
     </div>
 
     <!-- Right Column: Recent Calculations -->
     <section id="history-section">
-      <div id="history-header">
-        <label><input type="checkbox" id="toggle-full-history"> Full History</label>
-        <h2>Recent Calculations</h2>
-      </div>
+      <h2>Recent Calculations</h2>
+      <label id="toggle-container">
+        <input type="checkbox" id="toggle-full-history"> Full History
+      </label>
       <div id="history-entries"></div>
     </section>
 
@@ -35,10 +34,10 @@
     <section id="calculator-section">
       <div id="faction-select">
         <h3>Faction</h3>
-        <div class="faction-buttons">
-          <label><input type="radio" name="faction" value="german_us" checked /> US/German</label>
-          <label><input type="radio" name="faction" value="soviet" /> Soviet</label>
-          <label><input type="radio" name="faction" value="british" /> British</label>
+        <div class="faction-buttons-vertical">
+          <button type="button" class="faction-btn" data-faction="german_us">US/German</button>
+          <button type="button" class="faction-btn" data-faction="soviet">Soviet</button>
+          <button type="button" class="faction-btn" data-faction="british">British</button>
         </div>
       </div>
       <div id="distance-input">
@@ -47,7 +46,7 @@
         <div class="range-note">Range: 100–1600m</div>
       </div>
     </section>
-    
+
   </div>
 </body>
 </html>
