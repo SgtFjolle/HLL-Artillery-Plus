@@ -4,7 +4,7 @@ const distanceInput = document.getElementById('distance');
 const toggleFullHistory = document.getElementById('toggle-full-history');
 const factionButtons = document.querySelectorAll('.faction-btn');
 
-let selectedFaction = 'german_us';
+let selectedFaction = 'us';
 let history = [];
 let showFullHistory = false;
 let historyTimer;
@@ -12,7 +12,8 @@ let lastSavedDistance = null;
 let initialLoad = true;
 
 const factionMilRanges = {
-  "german_us": { min: 622, max: 978 },
+  "us": { min: 622, max: 978 },
+  "german": { min: 622, max: 978 },
   "soviet": { min: 800, max: 1120 },
   "british": { min: 267, max: 533 }
 };
@@ -33,24 +34,23 @@ function updateLiveResult() {
     resultOutput.classList.remove("out-of-range");
 
     if (initialLoad) {
-  initialLoad = false; // block history save entirely
-} else {
-  clearTimeout(historyTimer);
-  historyTimer = setTimeout(() => {
-    if (lastSavedDistance !== distance) {
-      history.unshift(`${distance}m → ${mil} mil`);
-      if (history.length > 10) history.pop();
-      lastSavedDistance = distance;
-      renderHistory();
+      initialLoad = false;
+    } else {
+      clearTimeout(historyTimer);
+      historyTimer = setTimeout(() => {
+        if (lastSavedDistance !== distance) {
+          history.unshift(`${distance}m → ${mil} mil`);
+          if (history.length > 10) history.pop();
+          lastSavedDistance = distance;
+          renderHistory();
+        }
+      }, 1000);
     }
-  }, 1000);
-}
   } else {
     resultOutput.textContent = "Out of Range";
     resultOutput.classList.add("out-of-range");
     clearTimeout(historyTimer);
   }
-  initialLoad = false;
 }
 
 function renderHistory() {
@@ -79,11 +79,11 @@ factionButtons.forEach(button => {
   if (button.dataset.faction === selectedFaction) {
     button.classList.add('active');
   }
- button.addEventListener('click', () => {
-  selectedFaction = button.dataset.faction;
-  factionButtons.forEach(btn => btn.classList.remove('active'));
-  button.classList.add('active');
-  initialLoad = true;
-  updateLiveResult();
- });
+  button.addEventListener('click', () => {
+    selectedFaction = button.dataset.faction;
+    factionButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    initialLoad = true;
+    updateLiveResult();
+  });
 });
