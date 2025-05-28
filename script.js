@@ -67,8 +67,10 @@ toggleFullHistory.addEventListener('change', () => {
 });
 
 distanceInput.value = 100;
+setTimeout(() => {
+  initialLoad = false;
+}, 1500);
 updateLiveResult();
-initialLoad = false;
 
 distanceInput.addEventListener('input', updateLiveResult);
 
