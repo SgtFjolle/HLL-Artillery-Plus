@@ -200,3 +200,12 @@ input[type="number"] {
 input[type="radio"] {
   margin-right: 0.25rem;
 }
+
+#faction-illustration {
+  width: calc(100% - 20px);  /* 10px padding on left/right */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  max-height: 100%;
+  object-fit: contain;
+}
