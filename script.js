@@ -65,9 +65,15 @@ toggleFullHistory.addEventListener('change', () => {
 });
 
 distanceInput.addEventListener('input', updateLiveResult);
+
 factionButtons.forEach(button => {
+  if (button.dataset.faction === selectedFaction) {
+    button.classList.add('active');
+  }
   button.addEventListener('click', () => {
     selectedFaction = button.dataset.faction;
+    factionButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
     updateLiveResult();
   });
 });
