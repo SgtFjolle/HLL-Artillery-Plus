@@ -4,20 +4,6 @@ const distanceInput = document.getElementById('distance');
 const toggleFullHistory = document.getElementById('toggle-full-history');
 const factionButtons = document.querySelectorAll('.faction-btn');
 const factionImage = document.getElementById('faction-illustration');
-factionButtons.forEach(button => {
-  if (button.dataset.faction === selectedFaction) {
-    button.classList.add('active');
-  }
-  button.addEventListener('click', () => {
-    selectedFaction = button.dataset.faction;
-    factionButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    initialLoad = true;
-    factionImage.src = `${selectedFaction.charAt(0).toUpperCase() + selectedFaction.slice(1)}.display.jpg`;
-    updateLiveResult();
-  });
-});
-
 
 let selectedFaction = 'us';
 let history = [];
@@ -99,6 +85,7 @@ factionButtons.forEach(button => {
     factionButtons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
     initialLoad = true;
+    factionImage.src = `${selectedFaction.charAt(0).toUpperCase() + selectedFaction.slice(1)}.display.jpg`;
     updateLiveResult();
   });
 });
