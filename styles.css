@@ -90,7 +90,7 @@ header h1 {
 
 #toggle-container {
   font-size: 1rem;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 #history-entries {
