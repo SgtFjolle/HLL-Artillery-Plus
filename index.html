@@ -33,21 +33,28 @@
     </section>
 
     <!-- Bottom Left: Calculator Inputs -->
-    <section id="calculator-section">
-      <div id="faction-select">
-        <h3>Factions</h3>
-        <div class="faction-buttons-vertical">
-          <button type="button" class="faction-btn" data-faction="german_us">US/German</button>
-          <button type="button" class="faction-btn" data-faction="soviet">Soviet</button>
-          <button type="button" class="faction-btn" data-faction="british">British</button>
-        </div>
+<section id="calculator-section">
+  <!-- Left box: Factions -->
+  <div class="calculator-box" id="faction-box">
+    <div id="faction-select">
+      <h3>Factions</h3>
+      <div class="faction-buttons-vertical">
+        <button type="button" class="faction-btn" data-faction="german_us">US/German</button>
+        <button type="button" class="faction-btn" data-faction="soviet">Soviet</button>
+        <button type="button" class="faction-btn" data-faction="british">British</button>
       </div>
-      <div id="distance-input">
-        <h3>Distance (m):</h3>
-        <input type="number" id="distance" name="distance" min="100" max="1600" required />
-        <div class="range-note">Range: 100–1600m</div>
-      </div>
-    </section>
+    </div>
+  </div>
+
+  <!-- Right box: Distance -->
+  <div class="calculator-box" id="distance-box">
+    <div id="distance-input">
+      <h3>Distance (m):</h3>
+      <input type="number" id="distance" name="distance" min="100" max="1600" required />
+      <div class="range-note">Range: 100–1600m</div>
+    </div>
+  </div>
+</section>
 
   </div>
 </body>
