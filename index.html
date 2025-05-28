@@ -23,17 +23,19 @@
 
     <!-- Right Column: Recent Calculations -->
     <section id="history-section">
-      <h2>Recent Calculations</h2>
-      <label id="toggle-container">
-        <input type="checkbox" id="toggle-full-history"> Full History
-      </label>
+      <div id="history-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="color: var(--accent);">Recent Calculations</h2>
+        <label id="toggle-container" style="color: var(--accent);">
+          <input type="checkbox" id="toggle-full-history"> Full History
+        </label>
+      </div>
       <div id="history-entries"></div>
     </section>
 
     <!-- Bottom Left: Calculator Inputs -->
     <section id="calculator-section">
       <div id="faction-select">
-        <h3>Faction</h3>
+        <h3>Factions</h3>
         <div class="faction-buttons-vertical">
           <button type="button" class="faction-btn" data-faction="german_us">US/German</button>
           <button type="button" class="faction-btn" data-faction="soviet">Soviet</button>
@@ -50,3 +52,4 @@
   </div>
 </body>
 </html>
+
