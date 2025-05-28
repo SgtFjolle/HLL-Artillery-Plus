@@ -9,6 +9,7 @@ let history = [];
 let showFullHistory = false;
 let historyTimer;
 let lastSavedDistance = null;
+let initialLoad = true;
 
 const factionMilRanges = {
   "german_us": { min: 622, max: 978 },
@@ -33,7 +34,7 @@ function updateLiveResult() {
 
     clearTimeout(historyTimer);
     historyTimer = setTimeout(() => {
-      if (lastSavedDistance !== distance) {
+      if (lastSavedDistance !== distance && !initialLoad) {
         history.unshift(`${distance}m → ${mil} mil`);
         if (history.length > 10) history.pop();
         lastSavedDistance = distance;
@@ -45,6 +46,7 @@ function updateLiveResult() {
     resultOutput.classList.add("out-of-range");
     clearTimeout(historyTimer);
   }
+  initialLoad = false;
 }
 
 function renderHistory() {
@@ -64,7 +66,6 @@ toggleFullHistory.addEventListener('change', () => {
   renderHistory();
 });
 
-// Initial input and result
 distanceInput.value = 100;
 updateLiveResult();
 
