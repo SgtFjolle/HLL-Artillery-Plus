@@ -32,15 +32,19 @@ function updateLiveResult() {
     resultOutput.textContent = `${mil} mil`;
     resultOutput.classList.remove("out-of-range");
 
-    clearTimeout(historyTimer);
-    historyTimer = setTimeout(() => {
-      if (lastSavedDistance !== distance && !initialLoad) {
-        history.unshift(`${distance}m → ${mil} mil`);
-        if (history.length > 10) history.pop();
-        lastSavedDistance = distance;
-        renderHistory();
-      }
-    }, 1000);
+    if (initialLoad) {
+  initialLoad = false; // block history save entirely
+} else {
+  clearTimeout(historyTimer);
+  historyTimer = setTimeout(() => {
+    if (lastSavedDistance !== distance) {
+      history.unshift(`${distance}m → ${mil} mil`);
+      if (history.length > 10) history.pop();
+      lastSavedDistance = distance;
+      renderHistory();
+    }
+  }, 1000);
+}
   } else {
     resultOutput.textContent = "Out of Range";
     resultOutput.classList.add("out-of-range");
@@ -67,10 +71,7 @@ toggleFullHistory.addEventListener('change', () => {
 });
 
 distanceInput.value = 100;
-setTimeout(() => {
-  updateLiveResult();
-  initialLoad = false;
-}, 50);
+updateLiveResult();
 
 distanceInput.addEventListener('input', updateLiveResult);
 
