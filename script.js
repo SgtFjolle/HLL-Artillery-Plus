@@ -19,6 +19,13 @@ const factionMilRanges = {
   "british": { min: 267, max: 533 }
 };
 
+const factionImageFiles = {
+  us: "US.display.jpg",
+  german: "German.display.jpg",
+  soviet: "Soviet.display.jpg",
+  british: "British.display.jpg"
+};
+
 function getMilValue(distance, faction) {
   const range = factionMilRanges[faction];
   if (!range) return null;
@@ -85,7 +92,7 @@ factionButtons.forEach(button => {
     factionButtons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
     initialLoad = true;
-    factionImage.src = `${selectedFaction.charAt(0).toUpperCase() + selectedFaction.slice(1)}.display.jpg`;
+    factionImage.src = factionImageFiles[selectedFaction];
     updateLiveResult();
   });
 });
