@@ -64,6 +64,10 @@ toggleFullHistory.addEventListener('change', () => {
   renderHistory();
 });
 
+// Initial input and result
+distanceInput.value = 100;
+updateLiveResult();
+
 distanceInput.addEventListener('input', updateLiveResult);
 
 factionButtons.forEach(button => {
