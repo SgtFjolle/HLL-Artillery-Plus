@@ -20,10 +20,10 @@ const factionMilRanges = {
 };
 
 const factionImageFiles = {
-  us: "US.display.jpg",
-  german: "German.display.jpg",
-  soviet: "Soviet.display.jpg",
-  british: "British.display.jpg"
+  us: "US.display.png",
+  german: "German.display.png",
+  soviet: "Soviet.display.png",
+  british: "British.display.png"
 };
 
 let milData = null;
