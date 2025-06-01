@@ -51,7 +51,8 @@ header h1 {
   flex-direction: column-reverse;
   align-items: center;
   gap: 2rem;
-  min-height: 360px;
+  height: 520px;
+  width: 350px;
 }
 
 #result-output {
@@ -89,6 +90,7 @@ header h1 {
   flex-direction: column;
   gap: 1rem;
   height: 520px;
+  width: 250px;
 }
 
 #history-section h2 {
