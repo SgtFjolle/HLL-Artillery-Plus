@@ -233,10 +233,10 @@ input[type="radio"] {
 }
 
 .display-box {
-  width: 350px;
+  width: 350px !important;
 }
 
 .history-box {
-  width: 250px;
+  width: 250px !important;
 }
 
