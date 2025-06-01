@@ -26,13 +26,20 @@ const factionImageFiles = {
   british: "British.display.jpg"
 };
 
+let milData = null;
+
 function getMilValue(distance, faction) {
-  const range = factionMilRanges[faction];
-  if (!range) return null;
-  const { min, max } = range;
-  const fraction = (distance - 100) / (1600 - 100);
-  return Math.floor((1 - fraction) * max + fraction * min);
+  if (!milData || !milData[faction]) return null;
+  return milData[faction][distance];
 }
+
+fetch('mil-values.json')
+  .then(response => response.json())
+  .then(data => {
+    milData = data;
+    distanceInput.value = 1600;
+    updateLiveResult();
+  });
 
 function updateLiveResult() {
   const distance = parseInt(distanceInput.value);
@@ -77,9 +84,6 @@ toggleFullHistory.addEventListener('change', () => {
   showFullHistory = toggleFullHistory.checked;
   renderHistory();
 });
-
-distanceInput.value = 100;
-updateLiveResult();
 
 distanceInput.addEventListener('input', updateLiveResult);
 
