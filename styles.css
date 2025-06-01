@@ -208,17 +208,15 @@ input[type="radio"] {
 }
 
 #faction-illustration {
-  width: calc(100% - 20px);
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: auto;
+  height: 200px;
   display: block;
-  max-height: 100%;
   object-fit: contain;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px auto;
   border: 2px solid black;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
+
 
 /* Shared box styling for display, history, calculator sections */
 #result-section,
