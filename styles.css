@@ -233,9 +233,9 @@ input[type="radio"] {
 }
 
 .display-box {
-  background-color: red;
+  background-color: red !important;
 }
 
 .history-box {
-  background-color: blue;
+  background-color: blue !important;
 }
