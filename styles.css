@@ -232,4 +232,11 @@ input[type="radio"] {
   margin-top: auto;
 }
 
+.display-box {
+  width: 350px;
+}
+
+.history-box {
+  width: 250px;
+}
 
