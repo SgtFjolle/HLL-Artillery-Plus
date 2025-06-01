@@ -55,11 +55,19 @@ header h1 {
 }
 
 #result-output {
+  width: 180px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
   color: var(--text);
-  margin-top: 0.5rem;
+  margin-top: auto;
 }
 
 #result-output.out-of-range {
@@ -222,6 +230,10 @@ input[type="radio"] {
   border: 2px solid black;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
+}
+
+#result-output {
+  margin-top: auto;
 }
 
 
