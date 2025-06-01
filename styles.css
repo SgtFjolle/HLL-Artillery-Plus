@@ -231,11 +231,3 @@ input[type="radio"] {
 #result-output {
   margin-top: auto;
 }
-
-.display-box {
-  background-color: red !important;
-}
-
-.history-box {
-  background-color: blue !important;
-}
