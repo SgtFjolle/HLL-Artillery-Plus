@@ -24,7 +24,7 @@ body {
 }
 
 #app-wrapper {
-  max-width: 1200px;
+  max-width: 965px;
   margin: auto;
   padding: 1rem;
   display: grid;
